@@ -22,6 +22,14 @@ export default function ProductMarquee() {
     );
   }
 
+  if (error) {
+    return (
+      <div className="border-y border-gray-200 px-4 py-3 text-sm text-gray-500">
+        পণ্যের তথ্য লোড করা যাচ্ছে না।
+      </div>
+    );
+  }
+
   if (products.length === 0) return null;
 
   return (

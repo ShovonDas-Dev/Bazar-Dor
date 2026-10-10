@@ -1,11 +1,30 @@
 import React from "react";
 import Section1 from "../Components/HomePage/Section1";
+import { fetchJson } from "@/lib/api";
 
 const home = async () => {
-  const data = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
-  );
-  const posts = await data.json();
+  let posts;
+  try {
+    posts = await fetchJson(
+      "https://api.abcz.workers.dev/api/bazardor/products",
+    );
+  } catch (error) {
+    console.error("Failed to load products:", error);
+    return (
+      <main className="mt-14 text-center text-gray-600">
+        পণ্যের তথ্য এখন লোড করা যাচ্ছে না। কিছুক্ষণ পরে আবার চেষ্টা করুন।
+      </main>
+    );
+  }
+
+  if (!Array.isArray(posts)) {
+    console.error("Failed to load products: API returned an unexpected format");
+    return (
+      <main className="mt-14 text-center text-gray-600">
+        পণ্যের তথ্য এখন লোড করা যাচ্ছে না। কিছুক্ষণ পরে আবার চেষ্টা করুন।
+      </main>
+    );
+  }
 
   const UpPosts = Array.isArray(posts)
     ? posts.filter((item) => item?.change?.dir === "up")

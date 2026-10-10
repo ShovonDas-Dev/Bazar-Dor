@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { fetchJson } from "@/lib/api";
 
 const useApi = (url) => {
   const [data, setData] = useState([]);
@@ -12,14 +13,7 @@ const useApi = (url) => {
       try {
         setLoading(true);
 
-        const response = await fetch(url);
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-
-        const result = await response.json();
-
+        const result = await fetchJson(url);
         setData(result);
       } catch (error) {
         setError(error.message);

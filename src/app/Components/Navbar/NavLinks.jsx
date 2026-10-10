@@ -1,10 +1,11 @@
 "use client";
 
 import useApi from "@/app/useAPI/useAPI";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const NavLinks = () => {
-  const { data: categories, loading } = useApi(
+  const { data: categories, loading, error } = useApi(
     "https://api.api-store.workers.dev/api/bazardor/categories"
   );
 
@@ -19,12 +20,17 @@ const NavLinks = () => {
             <p className="shrink-0 text-sm text-gray-500">
               Loading...
             </p>
+          ) : error ? (
+            <p className="shrink-0 text-sm text-gray-500">
+              ক্যাটাগরির তথ্য লোড করা যাচ্ছে না।
+            </p>
           ) : (
             (categories || []).map((category) => {
               const isActive = activeCategory === category.slug;
 
               return (
-                <button
+                <Link href={`/products/${category.slug}`} key={category.id}>
+                 <button
                   key={category.id}
                   type="button"
                   onClick={() => setActiveCategory(category.slug)}
@@ -40,6 +46,7 @@ const NavLinks = () => {
 
                   <span>{category.nameBn}</span>
                 </button>
+                </Link>
               );
             })
           )}

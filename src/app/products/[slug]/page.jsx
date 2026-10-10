@@ -4,11 +4,16 @@ import Loading from "../loading";
 import CategoryContent from "./CatagoryContent";
 
 // Parent non-async, direct stream trigger korbe
-const CategoryProducts = ({ params }) => {
+const CategoryProducts = async ({ params }) => {
+  const { slug } = await params;
+  const res = await fetch(
+    `https://api.abcz.workers.dev/api/bazardor/products?category=${slug}`,
+  );
+  const categoryData = await res.json();
   return (
     <div>
       <Suspense fallback={<Loading />}>
-        <CategoryContent params={params} />
+        <CategoryContent categoryData={categoryData} />
       </Suspense>
     </div>
   );

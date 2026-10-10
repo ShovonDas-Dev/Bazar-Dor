@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link";
 import { useState } from "react";
 
 const formatPrice = (value) => {
@@ -8,16 +9,10 @@ const formatPrice = (value) => {
   });
 };
 
-const CategoryContent = async ({ params }) => {
+const CategoryContent =  ({ categoryData }) => {
+    console.log(categoryData);
     const [sortOption, setSortOption] = useState("default");
-  // Params await child-e execution context holding
-  const { slug } = await params;
 
-  const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products?category=${slug}`,
-  );
-  const categoryData = await res.json();
-  console.log(categoryData);
 
   const sortedProducts = [...categoryData].sort((a, b) => {
     if (sortOption === "price-low") return a.today - b.today;
@@ -28,6 +23,7 @@ const CategoryContent = async ({ params }) => {
 
   return (
     <div>
+
       <main className="min-h-screen bg-[#f0f5f0] px-4 py-6 text-[#202923] sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="bg-[#f8faf7] border my-8 border-slate-200/80 rounded-2xl p-5 md:p-6 shadow-sm flex items-center gap-4">
@@ -44,7 +40,7 @@ const CategoryContent = async ({ params }) => {
           </div>
 
         {/* Filter Bar */}
-       <div className="bg-[#f8faf7] border border-slate-200/80 rounded-2xl p-4 shadow-sm flex items-center justify-end gap-3">
+       <div className="bg-[#f8faf7] my-6 border  border-slate-200/80 rounded-2xl p-4 shadow-sm flex items-center justify-end gap-3">
           <span className="text-sm font-medium text-slate-600">সাজান</span>
           <select
             value={sortOption}
@@ -62,7 +58,8 @@ const CategoryContent = async ({ params }) => {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {sortedProducts.map((product) => (
-              <div
+                <Link href={`/home/${product.id}`} key={product.id} className="group">
+                <div
                 key={product.id}
                 className="rounded-lg border border-[#e1e9e1] bg-white/80 p-4 shadow-sm transition-transform duration-300 hover:scale-105"
               >
@@ -81,10 +78,12 @@ const CategoryContent = async ({ params }) => {
                   {formatPrice(product.today - product.yesterday)} টাকা
                 </p>
               </div>
+                </Link>
             ))}
           </div>
         </div>
       </main>
+
     </div>
   );
 };

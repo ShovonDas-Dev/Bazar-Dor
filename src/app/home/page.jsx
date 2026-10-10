@@ -43,7 +43,7 @@ const home = async () => {
     .slice(0, 6);
 
   return (
-    <div>
+    <div className="w-full px-3 py-5 sm:px-5 sm:py-8 lg:px-8 lg:py-10">
 
       {/* আজ দাম বেড়েছে */}
 
@@ -74,7 +74,7 @@ const home = async () => {
 
 
       {/* সব পণ্য */}
-      <div className="mt-14">
+      <div id="all-products" className="mt-14">
         <h1 className="text-lg font-bold my-4 text-[#202B25]"> সব পণ্য</h1>
         <p className="text-gray-600 mb-5" >{posts.length} টি পণ্য পাওয়া গেছে</p>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">

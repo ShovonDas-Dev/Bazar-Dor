@@ -1,6 +1,7 @@
 "use client";
 
 import useApi from "@/app/useAPI/useAPI";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 
@@ -41,7 +42,8 @@ export default function ProductMarquee() {
           const isDown = change?.dir === "down";
 
           return (
-            <div
+            <Link href={`/home/${product.id}`} key={product.id} className="group">
+             <div
               key={product.id ?? product._id ?? index}
               className="flex shrink-0 items-center gap-2 border-r border-gray-200 px-5 py-2.5 text-sm"
             >
@@ -68,6 +70,7 @@ export default function ProductMarquee() {
                 </span>
               )}
             </div>
+            </Link>
           );
         })}
       </Marquee>

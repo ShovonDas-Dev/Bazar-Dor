@@ -24,12 +24,12 @@ export default function Hero() {
           </p>
 
           <div className="mt-5 sm:mt-6">
-            <Link
-              href="/products"
+            <Link 
+              href="#all-products"
               className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[#07883f] px-5 py-3 text-sm font-semibold text-white shadow-md transition-colors duration-200 hover:bg-[#066d34] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#07883f] sm:text-base"
             >
               সব পণ্য দেখুন
-            </Link>
+            </Link >
           </div>
         </div>
 

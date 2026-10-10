@@ -1,28 +1,27 @@
 
-"use client";
+'use client'
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import NavLinks from "./NavLinks";
 import { authClient } from "@/lib/auth-client";
 import Marque from "./Marque";
+import { useEffect, useState } from "react";
 
 const NavHadder = () => {
   const [banglaDate, setBanglaDate] = useState("");
 
-  const { data: session, isPending } = authClient.useSession();
-
+  // ADDED: tarikh shudhu browser-e set hobe
   useEffect(() => {
-    const today = new Date();
-
     setBanglaDate(
-      today.toLocaleDateString("bn-BD", {
+      new Date().toLocaleDateString("bn-BD", {
         day: "numeric",
         month: "long",
         year: "numeric",
-      })
+      }),
     );
   }, []);
+
+  const { data: session, isPending } = authClient.useSession();
 
   const handleSignOut = async () => {
     await authClient.signOut();

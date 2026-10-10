@@ -31,7 +31,7 @@ async function HomeDetails({ params }) {
   let item;
   try {
     item = await fetchJson(
-      `https://api.abcz.workers.dev/api/bazardor/products/${id}`,
+      `https://openapi.programming-hero.com/api/bazardor/products/${id}`,
     );
   } catch (error) {
     console.error(`Failed to load product ${id}:`, error);

@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 const NavLinks = () => {
   const { data: categories, loading, error } = useApi(
-    "https://api.api-store.workers.dev/api/bazardor/categories"
+    "https://openapi.programming-hero.com/api/bazardor/categories"
   );
 
   const [activeCategory, setActiveCategory] = useState("");

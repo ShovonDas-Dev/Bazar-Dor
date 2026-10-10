@@ -6,7 +6,7 @@ const home = async () => {
   let posts;
   try {
     posts = await fetchJson(
-      "https://api.abcz.workers.dev/api/bazardor/products",
+      "https://openapi.programming-hero.com/api/bazardor/products",
     );
   } catch (error) {
     console.error("Failed to load products:", error);

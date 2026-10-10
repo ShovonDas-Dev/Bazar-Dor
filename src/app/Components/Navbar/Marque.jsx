@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 
 export default function ProductMarquee() {
-  const {data, error} = useApi("https://api.api-store.workers.dev/api/bazardor/products")
+  const {data, error} = useApi("https://openapi.programming-hero.com/api/bazardor/products")
   const loading = !data && !error;
 
 

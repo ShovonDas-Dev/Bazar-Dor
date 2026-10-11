@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "My Website",
-  description: "My Next.js Website",
+  title: "Bazar Dor",
+  description: "Bazar Dor is a Bangladeshi online marketplace that connects buyers and sellers, offering a wide range of products and services. Our platform provides a convenient and secure way for users to buy and sell items, from electronics and fashion to home goods and vehicles. With a user-friendly interface and robust features, Bazar Dor aims to enhance the online shopping experience for everyone in Bangladesh.",
 };
 
 export default function RootLayout({ children }) {

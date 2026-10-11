@@ -27,9 +27,7 @@ const SignInPage = () => {
     });
   };
 
-  // =========================
-  // Email + Password Sign In
-  // =========================
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
